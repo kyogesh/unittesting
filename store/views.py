@@ -1,26 +1,23 @@
-
 from django.shortcuts import render
-
+from django.views import generic
 from store.models import Product, ShoppingCart
 
-def index(request):
-    context = {
-        'products': Product.objects.all(),
-    }
-    return render(request, 'store/product_list.html', context)
 
-def show(request, id):
-    context = {
-        'product': Product.objects.get(id=id),
-    }
-    return render(request, 'store/product.html', context)
+class IndexView(generic.ListView):
+    template_name = 'store/product_list.html'
+    context_object_name = 'products'
 
-def cart(request):
-    context = {
-        'items': [],
-        'subtotal': 1.0,
-        'tax_rate': int(ShoppingCart.TAX_RATE * 100.0),
-        'tax_total': 2.0,
-        'total': 3.0,
-    }
-    return render(request, 'store/cart.html', context)
+    def get_queryset(self):
+        return Product.objects.all()
+
+
+class ProductDetailView(generic.DetailView):
+    template_name = 'store/product.html'
+    context_object_name = 'product'
+    model = Product
+
+
+class CartView(generic.DetailView):
+    template_name = 'store/cart.html'
+    context_object_name = 'cart'
+    model = ShoppingCart

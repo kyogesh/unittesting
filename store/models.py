@@ -49,6 +49,9 @@ class ShoppingCart(models.Model):
             amount += item.quantity * item.product.current_price()
         return round(amount, 2)
 
+    def tax_percentage(self):
+        return self.TAX_RATE * 100
+
     def taxes(self):
         return round(self.TAX_RATE * self.subtotal(), 2)
 
