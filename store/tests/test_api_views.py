@@ -104,7 +104,7 @@ class TestProductRetrieveUpdateDestroy(APITestCase):
     def test_update_product_warranty(self):
         data = {'price': 59.59, 'name': 'New Product One', 'description': 'New description for One',
                 'warranty': open('warranty.txt')}
-        resp = self.client.patch(reverse('product-rud', args=[self.products[1].pk, ]), data=data)
+        resp = self.client.put(reverse('product-rud', args=[self.products[1].pk, ]), data=data)
         self.assertEqual(resp.status_code, 200)
         content = json.loads(resp.content.decode('utf-8'))
         self.assertIn('Warranty Information:', content['description'])
