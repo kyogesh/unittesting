@@ -2,7 +2,7 @@ appnope==0.1.0
 backcall==0.1.0
 coverage==4.5.4
 decorator==4.4.1
-Django==2.2.7
+Django==2.2.8
 django-extensions==2.2.5
 django-filters==0.2.1
 djangorestframework==3.10.3
