@@ -93,5 +93,6 @@ class TestShoppingCartItem(TestCase):
 
     def test_model_string_representation(self):
         cart_item = mommy.make('store.ShoppingCartItem')
-        expected_value = f'<ShoppingCartItem object ({cart_item.id}) {cart_item.quantity}x "{cart_item.product.name}">'
+        expected_value = '<ShoppingCartItem object ({cart_item.id}) ' \
+                         '{cart_item.quantity}x "{cart_item.product.name}">'.format(cart_item=cart_item)
         self.assertEqual(expected_value, repr(cart_item))

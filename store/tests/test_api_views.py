@@ -25,19 +25,19 @@ class TestProductList(APITestCase):
     def test_get_all_products(self):
         resp = self.client.get(reverse('product-list-api'))
         self.assertEqual(resp.status_code, 200)
-        content = json.loads(resp.content)
+        content = json.loads(resp.content.decode('utf-8'))
         self.assertEqual(len(content['results']), 7)
 
     def test_get_products_on_sale_true(self):
         resp = self.client.get(reverse('product-list-api'), dict(on_sale=True))
         self.assertEqual(resp.status_code, 200)
-        content = json.loads(resp.content)
+        content = json.loads(resp.content.decode('utf-8'))
         self.assertEqual(len(content['results']), 3)
 
     def test_get_products_on_sale_false(self):
         resp = self.client.get(reverse('product-list-api'), dict(on_sale=False))
         self.assertEqual(resp.status_code, 200)
-        content = json.loads(resp.content)
+        content = json.loads(resp.content.decode('utf-8'))
         self.assertEqual(len(content['results']), 7)
 
     def test_pagination(self):
