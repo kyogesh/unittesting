@@ -75,4 +75,5 @@ class ShoppingCartItem(models.Model):
         return round(self.quantity * self.product.current_price())
 
     def __repr__(self):
-        return '<ShoppingCartItem object ({}) {}x "{}">'.format(self.id, self.quantity, self.product.name)
+        return '<ShoppingCartItem object ({}) {}x "{}">'.format(
+            self.id, self.quantity, self.product.name)
