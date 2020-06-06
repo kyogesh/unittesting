@@ -49,7 +49,7 @@ class TestProduct(TestCase):
 
     def test_model_string_representation(self):
         product = mommy.make('store.Product')
-        expected_value = f'<Product object ({product.id}) "{product.name}">'
+        expected_value = '<Product object ({product.id}) "{product.name}">'.format(product=product)
         self.assertEqual(expected_value, repr(product))
 
 
