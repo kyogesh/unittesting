@@ -61,7 +61,8 @@ class ShoppingCart(models.Model):
     def __repr__(self):
         name = self.name or '[Guest]'
         address = self.address or '[No Address]'
-        return '<ShoppingCart object ({}) "{}" "{}">'.format(self.id, name, address)
+        return '<ShoppingCart object ({}) "{}" "{}">'.format(self.id,
+                                                             name, address)
 
 
 class ShoppingCartItem(models.Model):
