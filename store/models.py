@@ -68,7 +68,8 @@ class ShoppingCartItem(models.Model):
     shopping_cart = models.ForeignKey(ShoppingCart, related_name='items',
                                       related_query_name='item',
                                       on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, related_name='+', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, related_name='+',
+                                on_delete=models.CASCADE)
     quantity = models.IntegerField()
 
     def total(self):
