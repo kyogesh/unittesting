@@ -86,7 +86,7 @@ class TestProductRetrieveUpdateDestroy(APITestCase):
     def test_retrieve_product(self):
         resp = self.client.get(reverse('product-rud', args=[self.products[0].pk, ]))
         self.assertEqual(resp.status_code, 200)
-        content = json.loads(resp.content)
+        content = json.loads(resp.content.decode('utf-8'))
         self.assertEqual(content['name'], self.products[0].name)
 
     def test_update_product(self):
