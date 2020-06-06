@@ -16,6 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from store import views, api_views
+
 urlpatterns = [
+    path('api/v1/products/', api_views.ProductList.as_view(), name='product-list-api'),
+    path('api/v1/products/new', api_views.ProductCreate.as_view(), name='product-create-api'),
+    path('api/v1/products/<int:id>/', api_views.ProductRetrieveUpdateDestroy.as_view(), name='product-rud'),
+    # path('api/v1/products/<int:id>/destroy', api_views.ProductDestroy.as_view(), name='product-delete-api'),
+
     path('admin/', admin.site.urls),
+    path('products/<int:pk>/', views.ProductDetailView.as_view(), name='show-product'),
+    path('cart/<int:pk>/', views.CartView.as_view(), name='shopping-cart'),
+    path('', views.IndexView.as_view(), name='list-products'),
 ]

@@ -47,6 +47,11 @@ class TestProduct(TestCase):
         price = product.price
         self.assertEqual(product.current_price(), round(price, 2))
 
+    def test_model_string_representation(self):
+        product = mommy.make('store.Product')
+        expected_value = f'<Product object ({product.id}) "{product.name}">'
+        self.assertEqual(expected_value, repr(product))
+
 
 class TestShoppingCart(TestCase):
 
@@ -57,6 +62,11 @@ class TestShoppingCart(TestCase):
     def test_amount_of_empty_cart(self):
         cart = mommy.make('store.ShoppingCart')
         self.assertEqual(cart.total(), 0.0)
+
+    def test_model_string_representation(self):
+        cart = mommy.make('store.ShoppingCart')
+        expected_value = f'<ShoppingCart object ({cart.id}) "{cart.name}" "{cart.address}">'
+        self.assertEqual(expected_value, repr(cart))
 
 
 class TestShoppingCartItem(TestCase):
@@ -80,3 +90,8 @@ class TestShoppingCartItem(TestCase):
         mommy.make(ShoppingCartItem, quantity=1, shopping_cart=cart, product__price=17.80)
         mommy.make(ShoppingCartItem, quantity=4, shopping_cart=cart, product__price=37.25)
         self.assertEqual(cart.total(), 367.59)
+
+    def test_model_string_representation(self):
+        cart_item = mommy.make('store.ShoppingCartItem')
+        expected_value = f'<ShoppingCartItem object ({cart_item.id}) {cart_item.quantity}x "{cart_item.product.name}">'
+        self.assertEqual(expected_value, repr(cart_item))
