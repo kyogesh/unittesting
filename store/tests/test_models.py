@@ -15,7 +15,8 @@ class TestProduct(TestCase):
     def test_product_on_sale(self) -> None:
         sale_start = timezone.now()
         sale_end = timezone.now() + datetime.timedelta(days=1)
-        product = mommy.make('store.Product', sale_start=sale_start, sale_end=sale_end)
+        product = mommy.make('store.Product', sale_start=sale_start,
+                             sale_end=sale_end)
         self.assertTrue(product.is_on_sale())
         self.assertTrue(product.is_on_sale())
 
