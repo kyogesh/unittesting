@@ -1,2 +1,2 @@
 # Unit tests
-Django unit tests with coverage
+Django unittests with coverage
