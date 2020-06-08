@@ -31,8 +31,11 @@ pipeline {
       }
       stage('Run tests') {
          steps {
-            sh 'pwd'
-            sh 'python manage.py test'
+            dir ('/var/jenkins_home/workspace') {
+                sh '''. venv/bin/activate
+                    python jenkins-webhook_master/manage.py test
+                    '''
+            }
          }
       }
    }
