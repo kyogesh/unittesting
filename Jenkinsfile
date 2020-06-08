@@ -17,7 +17,7 @@ pipeline {
       stage('Activate') {
          steps {
             dir ('/var/jenkins_home/workspace') {
-                sh 'ls new-pipe'
+                sh 'ls jenkins-webhook'
                 sh '''. .venv/bin/activate
                     pip install -r jenkins-webhook/requirements.txt
                     '''
