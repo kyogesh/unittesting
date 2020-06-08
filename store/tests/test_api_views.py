@@ -98,7 +98,8 @@ class TestProductRetrieveUpdateDestroy(APITestCase):
         self.assertEqual(content['name'], data['name'])
 
     def test_delete_product(self):
-        resp = self.client.delete(reverse('product-rud', args=[self.products[0].pk, ]))
+        resp = self.client.delete(reverse('product-rud',
+                                          args=[self.products[0].pk, ]))
         self.assertEqual(resp.status_code, 204)
 
     def test_update_product_warranty(self):
