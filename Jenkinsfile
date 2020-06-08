@@ -19,7 +19,7 @@ pipeline {
             dir ('/var/jenkins_home/workspace') {
                 sh 'ls jenkins-webhook'
                 sh '''. .venv/bin/activate
-                    pip install -r jenkins-webhook/requirements.txt
+                    pip install -r jenkins-webhook_master/requirements.txt
                     '''
             }
          }
