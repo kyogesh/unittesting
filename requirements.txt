@@ -4,7 +4,7 @@ boto3==1.13.14
 botocore==1.16.14
 coverage==4.5.4
 decorator==4.4.1
-Django==2.2.7
+Django==2.2.22
 django-extensions==2.2.5
 django-filter==2.3.0
 djangorestframework==3.10.3
